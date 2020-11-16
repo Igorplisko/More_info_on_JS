@@ -109,15 +109,47 @@ console.log(b)
 //?----------------------------------------------------
 
 
-//!Ways to copy or clone an object.
-
-//*Method number 2:
+//!WAYS TO COPY OR CLONE AN OBJECT:
 
 
+//*Method number 1:
+let person = {
+    firstName: "John",
+    age: 50,
+    eyeColor: "blue"
+  };
+
+let copy = Object.assign({}, person);
+console.log(copy);
 
 //?----------------------------------------------------
 
 //*Method number 2:
+let person = {
+    firstName: "John",
+    eyeColor: "blue"
+  };
+
+let copy = {...person};
+console.log(copy);
+
+//?----------------------------------------------------
+
+//*Method number 3:
+let person = {
+    firstName: "John",
+    age: 50,
+    eyeColor: "blue"
+  };
+
+let copy = JSON.parse(JSON.stringify(person));
+console.log(copy);
+
+
+//?----------------------------------------------------
+
+
+//*Method number 3:
 let person = {
     firstName: "John",
     lastName: "Doe",
@@ -135,4 +167,113 @@ for (let key in person) {
 //?----------------------------------------------------
 
 
+
+var target = {
+    "A" : {
+         "Z" : 1,
+         "X" : 2,
+         "Y" : {
+            "F" : 3,
+            "G" : 4    //?????????
+         }
+    }
+  };
+  
+  target.__proto__.f = function(){};
+  
+  var clone1 = Object.clone(target, false, true);
+  clone1.f //undefined
+  clone1.A == target.A //false
+  
+  var clone2 = Object.clone(target, true);
+  clone2.f //function
+  clone2.A == target.A //true
+
+  //?-------------------------------------------------------------
+
+
+
+
+  
+  
+  
+ //* Простой и наивный способ копирования объектов
+  const mainObj = {
+    a: 2,
+    b: 5,
+    c: {
+      x: 7,
+      y: 4,
+    },
+  }
+  
+  
+  function copy(mainObj) {
+    let objCopy = {}; // objCopy будет хранить копию mainObj
+    let key;
+  
+    for (key in mainObj) {
+      objCopy[key] = mainObj[key]; // копирует каждое свойство objCopy
+    }
+    return objCopy;
+  }
+  
+  
+  
+  console.log(copy(mainObj)
+
+  //?----------------------------------------------------------
+
+//!
+
+  //* СОЕДИНЕНИЕ ДВУХ ОБЪЕКТОВ В ОДИН:
+
+  
+//*Method number 1:
+var a = {a:1, b:2, c:3};
+var b = {a:2, b:2};
+
+console.log(Object.assign(a,b));   // result Object {a: 2, b: 2, c: 3}
+
+//?----------------------------------------------------------
+
+
+//*Method number 2:
+Пример: слияние объектов
+var o1 = { a: 1 };     
+var o2 = { b: 2 };
+var o3 = { c: 3 };  //??????????
+
+var obj = Object.assign(o1, o2, o3);
+console.log(obj); // { a: 1, b: 2, c: 3 }
+console.log(o1);  // { a: 1, b: 2, c: 3 }, изменился и сам целевой объект.
+
+//?----------------------------------------------------------
+
+
+//*Method number 3:
+
+var a = {
+    a: 1,
+    b: 2,
+    c: 3
+  }
+  var b = {
+    a: 4,            //TODO нужно разобраться с этим кодом !
+    c: 0,
+    d: 10
+  }
+  
+  objects = function (a,b) {
+    var c = {},
+    key;
+    for (key in a) {
+      if (a.hasOwnProperty(key)) {
+       c[key] = key in b ? b[key] : a[key];
+      }
+    }
+    return c;
+  }
+  
+ //?----------------------------------------------------------
 
