@@ -40,3 +40,6 @@ for (var attr in obj2) {
     merged3[attr] = obj2[attr];
 }
 console.table(merged3)
+
+
+//! change this code
