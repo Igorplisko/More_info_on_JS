@@ -41,5 +41,3 @@ for (var attr in obj2) {
 }
 console.table(merged3)
 
-
-//! change this code
