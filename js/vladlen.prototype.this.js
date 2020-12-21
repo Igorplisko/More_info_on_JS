@@ -32,5 +32,3 @@ const cat = new Cat({
     hasTail: true
 })
 
-
-//! change this code
